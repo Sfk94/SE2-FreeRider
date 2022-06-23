@@ -1,43 +1,48 @@
 package de.freerider.datamodel;
 
+
 import java.util.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
- * Class for entity type Customer. Customer is an individual who acts as holder of a business relationship.
+ * Class for entity type Customer. Customer is an individual who acts as holder
+ * of a business relationship.
  * 
  * @since "0.1.0"
  * @version "0.1.0"
  * @author sgra64
  */
 
+@Entity
+@Table(name = "CUSTOMER")
 public class Customer {
 
-    /**
-     * id attribute, {@code < 0} invalid, can be set only once.
-     */
-    private long id = -1;
-
-    /**
-     * surname, never null, mapped to "" when empty.
-     */
-    private String lastName = "";
-
-    /**
-     * none-surname name parts, never null, mapped to "" when empty.
-     */
-    private String firstName = "";
-
-    /**
-     * contact information with multiple contact entries.
-     */
-    private List<String> contacts = new ArrayList<String>();
-
-    /**
-     * status information of a Customer.
-     */
-    private Status status = Status.New;
-
+  /**
+* id attribute, {@code < 0} invalid, can be set only once.
+*/
+@Id // PRIMARY KEY attribute
+@Column(name ="ID")
+private long id = -1;
+  @Column(name = "NAME")
+  private String lastName = "";
+  @Column(name = "FIRST_NAME")
+  private String firstName = "";
+  @Transient // 1:n relation, currently not in table
+  private List<String> contacts = new ArrayList<String>();
+  
+  /**
+   * status of Customer.
+   */
+  
+  @Column(name = "STATUS")
+  @Enumerated
+  private Status status = Status.New;
 
     /**
      * Definition of Customer Status states.
