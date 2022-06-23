@@ -1,0 +1,143 @@
+2022-06-23 19:27:24 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "GET[*] ALL"; erwartet "GRANT"
+Syntax error in SQL statement "GET[*] ALL"; expected "GRANT"; SQL statement:
+GET ALL [42001-200]
+2022-06-23 19:28:39 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "ID[*] * FROM FIRST_NAME NAME STATUS STATUS CUSTOMER"; erwartet "INSERT"
+Syntax error in SQL statement "ID[*] * FROM FIRST_NAME NAME STATUS STATUS CUSTOMER"; expected "INSERT"; SQL statement:
+ID * FROM FIRST_NAME NAME STATUS STATUS CUSTOMER [42001-200]
+2022-06-23 19:28:55 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SELECT * FROM CUSTOMER ID FIRST_NAME[*]"
+Syntax error in SQL statement "SELECT * FROM CUSTOMER ID FIRST_NAME[*]"; SQL statement:
+SELECT * FROM CUSTOMER ID FIRST_NAME [42000-200]
+2022-06-23 19:29:06 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "CUSTOMER[*]"; erwartet "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"
+Syntax error in SQL statement "CUSTOMER[*]"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CUSTOMER [42001-200]
+2022-06-23 19:30:32 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "GET[*] ALL * FROM CUSTOMER"; erwartet "GRANT"
+Syntax error in SQL statement "GET[*] ALL * FROM CUSTOMER"; expected "GRANT"; SQL statement:
+GET ALL * FROM CUSTOMER [42001-200]
+2022-06-23 19:31:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "CUSTOMER[*]"; erwartet "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"
+Syntax error in SQL statement "CUSTOMER[*]"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CUSTOMER [42001-200]
+2022-06-23 19:31:41 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SELECT FROM *[*] CUSTOMER"; erwartet "identifier"
+Syntax error in SQL statement "SELECT FROM *[*] CUSTOMER"; expected "identifier"; SQL statement:
+Select from * CUSTOMER [42001-200]
+2022-06-23 19:32:12 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "GET[*] * ID 2"; erwartet "GRANT"
+Syntax error in SQL statement "GET[*] * ID 2"; expected "GRANT"; SQL statement:
+GET * ID 2 [42001-200]
+2022-06-23 19:33:27 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Feld "ID" nicht gefunden
+Column "ID" not found; SQL statement:
+SELECT ID [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.command.dml.Select.prepare(Select.java:1206)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp.query(WebApp.java:1092)
+	at org.h2.server.web.WebApp.process(WebApp.java:241)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2022-06-23 19:33:54 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SELECT ID ""2"" FROM *[*]  CUSTOMER"; erwartet "identifier"
+Syntax error in SQL statement "SELECT ID ""2"" FROM *[*]  CUSTOMER"; expected "identifier"; SQL statement:
+SELECT ID "2" from *  CUSTOMER [42001-200]
+2022-06-23 19:34:13 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SELECT ID 3[*] FROM CUSTOMER"
+Syntax error in SQL statement "SELECT ID 3[*] FROM CUSTOMER"; SQL statement:
+SELECT ID 3 FROM CUSTOMER [42000-200]
+2022-06-23 23:17:55 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "CUSTOMERS" nicht gefunden
+Table "CUSTOMERS" not found; SQL statement:
+SELECT FROM Customers WHERE ID=4 [42102-200]
+2022-06-23 23:18:43 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "CUSTOME" nicht gefunden
+Table "CUSTOME" not found; SQL statement:
+SELECT FROM Custome WHERE ID=1 [42102-200]
+2022-06-23 23:19:03 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] WHERE ID=1"
+Syntax error in SQL statement "SHOW CUSTOMER[*] WHERE ID=1"; SQL statement:
+SHOW Customer WHERE ID=1 [42000-200]
+2022-06-23 23:19:07 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "GETCUSTOMER[*] WHERE ID=1"; erwartet "GRANT"
+Syntax error in SQL statement "GETCUSTOMER[*] WHERE ID=1"; expected "GRANT"; SQL statement:
+GETCustomer WHERE ID=1 [42001-200]
+2022-06-23 23:19:14 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "GETCUSTOMER[*] WHERE ID=1"; erwartet "GRANT"
+Syntax error in SQL statement "GETCUSTOMER[*] WHERE ID=1"; expected "GRANT"; SQL statement:
+GETCustomer WHERE ID=1 [42001-200]
+2022-06-23 23:19:38 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] WHERE ID=1"
+Syntax error in SQL statement "SHOW CUSTOMER[*] WHERE ID=1"; SQL statement:
+SHOW CUSTOMER WHERE ID=1 [42000-200]
+2022-06-23 23:19:46 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] * WHERE ID=1"
+Syntax error in SQL statement "SHOW CUSTOMER[*] * WHERE ID=1"; SQL statement:
+SHOW CUSTOMER * WHERE ID=1 [42000-200]
+2022-06-23 23:19:59 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] ID=1"
+Syntax error in SQL statement "SHOW CUSTOMER[*] ID=1"; SQL statement:
+SHOW CUSTOMER ID=1 [42000-200]
+2022-06-23 23:20:04 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*]"
+Syntax error in SQL statement "SHOW CUSTOMER[*]"; SQL statement:
+SHOW CUSTOMER [42000-200]
+2022-06-23 23:20:09 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*]"
+Syntax error in SQL statement "SHOW CUSTOMER[*]"; SQL statement:
+SHOW CUSTOMER [42000-200]
+2022-06-23 23:20:17 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] FIRST_NAME"
+Syntax error in SQL statement "SHOW CUSTOMER[*] FIRST_NAME"; SQL statement:
+SHOW CUSTOMER FIRST_NAME [42000-200]
+2022-06-23 23:20:18 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] FIRST_NAME"
+Syntax error in SQL statement "SHOW CUSTOMER[*] FIRST_NAME"; SQL statement:
+SHOW CUSTOMER FIRST_NAME [42000-200]
+2022-06-23 23:20:19 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "SHOW CUSTOMER[*] FIRST_NAME"
+Syntax error in SQL statement "SHOW CUSTOMER[*] FIRST_NAME"; SQL statement:
+SHOW CUSTOMER FIRST_NAME [42000-200]
