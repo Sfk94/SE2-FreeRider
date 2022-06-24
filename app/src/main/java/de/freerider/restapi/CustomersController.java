@@ -24,7 +24,7 @@ import de.freerider.repository.CustomerRepository;
 
 @RestController
 class CustomersController implements CustomersAPI {
-
+//yxyxyx
     @Autowired 
     private CustomerRepository customerRepository;
     private ApplicationContext context;
@@ -33,7 +33,7 @@ class CustomersController implements CustomersAPI {
     //
     private final HttpServletRequest request;
 
-    private final Iterable<Customer> customers;
+//    private final Iterable<Customer> customers;
 
     /**
      * Constructor.
@@ -41,14 +41,14 @@ class CustomersController implements CustomersAPI {
      * @param objectMapper entry point to JSON tree for the Jackson library
      * @param request      HTTP request object
      */
-    @Autowired
+   
     public CustomersController(ObjectMapper objectMapper, HttpServletRequest request, ApplicationContext context,
             CustomerRepository customerRepository) {
         this.objectMapper = objectMapper;
         this.request = request;
         this.context = context;
-        this.customerRepository = customerRepository;
-        this.customers = customerRepository.findAll();
+//        this.customerRepository = customerRepository;
+//      this.customers = customerRepository.findAll();
     }
 
     @Override
@@ -56,7 +56,8 @@ class CustomersController implements CustomersAPI {
         ResponseEntity<List<?>> re = null;
         System.err.println(request.getMethod() + " " + request.getRequestURI());
         try {
-            ArrayNode arrayNode = customersAsJSON();
+        	Iterable<Customer> customers = customerRepository.findAll();
+            ArrayNode arrayNode = customersAsJSON(customers);
             ObjectReader reader = objectMapper.readerFor(new TypeReference<List<ObjectNode>>() {
             });
             List<String> list = reader.readValue(arrayNode);
@@ -71,25 +72,31 @@ class CustomersController implements CustomersAPI {
 
     @Override
     public ResponseEntity<?> getCustomer(long id) {
-        ResponseEntity<Object> response = null;
+//    	try {
+//    		Optional<Customer> customers = customerRepository.findById(id)
+//    	}
+//        ResponseEntity<Object> response = null;
         System.err.println(request.getMethod() + " " + request.getRequestURI());
-        try {
-            ObjectNode objectNode = customerAsJSON(id);
-            if (objectNode.size() == 0) {
-                response = new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+//        try {
+//            ObjectNode objectNode = customerAsJSON(null);
+            Optional<Customer> customer = customerRepository.findById(id);
+            System.out.println("SDFSDF");
+            if (customer.isPresent()) {
+                return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+                
             } else {
-                ObjectReader reader = objectMapper.readerFor(new TypeReference<ObjectNode>() {
-                });
-                Object customer = reader.readValue(objectNode);
-                response = new ResponseEntity<Object>(customer, HttpStatus.OK);
+//                ObjectReader reader = objectMapper.readerFor(new TypeReference<ObjectNode>() {
+//                });
+//                Object customers = reader.readValue(objectNode);
+               return new ResponseEntity<Object>(customer, HttpStatus.OK);
             }
-        } catch (IOException e) {
-            response = new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return response;
+//        } catch (IOException e) {
+//            response = new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+        
     }
 
-    private ArrayNode customersAsJSON() {
+    private ArrayNode customersAsJSON(Iterable<Customer> customers) {
         System.out.println(customers);
         ArrayNode arrayNode = objectMapper.createArrayNode();
         for (Customer customer : customers) {
@@ -106,19 +113,18 @@ class CustomersController implements CustomersAPI {
         return arrayNode;
     }
 
-    private ObjectNode customerAsJSON(long id) {
+    private ObjectNode customerAsJSON(Customer customer) {
         ObjectNode objectNode = objectMapper.createObjectNode();
-        for (Customer customer : customers) {
-            if (customer.getId() == id) {
-                objectNode.put("id", customer.getId());
-                objectNode.put("firstName", customer.getFirstName());
-                objectNode.put("lastName", customer.getLastName());
-                Iterable<String> contacts = customer.getContacts();
-                StringBuffer sb = new StringBuffer();
-                contacts.forEach(contact -> sb.append(sb.length() == 0 ? "" : "; ").append(contact));
-                objectNode.put("contacts", sb.toString());
-            }
-        }
+     
+        objectNode.put("id", customer.getId());
+        objectNode.put("firstName", customer.getFirstName());
+        objectNode.put("lastName", customer.getLastName());
+        Iterable<String> contacts = customer.getContacts();
+        StringBuffer sb = new StringBuffer();
+        contacts.forEach(contact -> sb.append(sb.length() == 0 ? "" : "; ").append(contact));
+        objectNode.put("contacts", sb.toString());
+            
+        
         return objectNode;
     }
 
